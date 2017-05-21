@@ -19,6 +19,7 @@ RSpec.describe Message do
 
       it 'is invalid when format regex does not have matches' do
         invalid_payloads = %w[2aa aa2 a2a a22 22a a22a aa22 22aa aa22aa 2222 2]
+
         invalid_payloads.each do |invalid_payload|
           subject.payload = invalid_payload
 
@@ -30,6 +31,7 @@ RSpec.describe Message do
 
       it 'is valid when format regex has matches' do
         valid_payloads = %w[aa a-a a*a &@ %&* _a -a]
+
         valid_payloads.each do |valid_payload|
           subject.payload = valid_payload
 
