@@ -5,13 +5,13 @@ RSpec.describe Message do
     it { should define_enum_for(:message_type).with(subject.class.message_types.keys) }
     it { is_expected.to validate_presence_of :payload }
 
-    context "if message_type is send_text" do
+    context 'if message_type is send_text' do
       before { allow(subject).to receive(:send_text?).and_return(true) }
 
       it { is_expected.to validate_length_of(:payload).is_at_most(160) }
     end
 
-    context "if message_type is send_emotion" do
+    context 'if message_type is send_emotion' do
       before { allow(subject).to receive(:send_emotion?).and_return(true) }
       payload_regex = /\A(?:[^\d])*\z/
 
